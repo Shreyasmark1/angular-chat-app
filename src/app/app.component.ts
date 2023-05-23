@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ChatService } from './services/chat.service';
 import { environment } from 'src/environments/environment.development';
+import { HostListener } from '@angular/core';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class AppComponent {
   }
 
   send() {
-    if (!isTextEmpty(this.myMessage) && !isTextEmpty(this.myName)) {
+    if (!isTextEmpty(this.myMessage) && !isTextEmpty(this.myName) && !this.limitReached) {
       const message:MessageObject = new MessageObject();
       message.message = this.myMessage;
       message.name = this.myName
@@ -41,6 +42,7 @@ export class AppComponent {
       this.myMessage = ""
       this.clearTimer()
       this.doneTyping()
+      this.updateNumberOfMessage()
     }    
   }
 
@@ -156,6 +158,11 @@ export class AppComponent {
 
   goToLink() {
     window.open(this.url, "_blank");
+  }
+
+  @HostListener('window:beforeunload', [ '$event' ])
+  beforeUnloadHandler(event:any) {
+    this.disconnect()
   }
 
 }

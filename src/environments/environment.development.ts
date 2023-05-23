@@ -1,4 +1,5 @@
 export const environment = {
+    dev:true,
     api: 'http://localhost:5000/',
     messageLimit: 200,
     closingText: "This is a closeing text",

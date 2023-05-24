@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "clear && ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production --base-href https://shreyasmark1.github.io/angular-chat-app/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

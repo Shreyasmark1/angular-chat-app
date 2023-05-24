@@ -16,6 +16,7 @@ export class AppComponent {
   myMessage: string = "";
   numberOfMessage : number = 0;
   limitReached : boolean = true;
+  messageLimit : number = environment.messageLimit;
   messageList: MessageObject[] = [];
   closingText: string = environment.closingText;
   url: string = environment.contactMe;
@@ -129,7 +130,7 @@ export class AppComponent {
 
   updateNumberOfMessage(){
 
-    if(this.numberOfMessage >= environment.messageLimit){
+    if(this.numberOfMessage >= this.messageLimit){
 
       this.limitReached = true;
       this.disconnect()

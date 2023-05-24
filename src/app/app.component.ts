@@ -15,7 +15,7 @@ export class AppComponent {
   myName: string = "";
   myMessage: string = "";
   numberOfMessage : number = 0;
-  limitReached : boolean = true;
+  limitReached : boolean = false;
   messageLimit : number = environment.messageLimit;
   messageList: MessageObject[] = [];
   closingText: string = environment.closingText;
